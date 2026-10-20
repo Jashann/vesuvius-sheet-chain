@@ -71,6 +71,14 @@ KOINE=villa/ink-detection VESUVIUS_SRC=villa/vesuvius/src MODEL=reader2 TRAIN=S2
 
 ![dupcheck before and after](figures/dupcheck_before_after.png)
 
+- One sheet as one surface: S1 chained through all five bands (three windings per band, merged on a common angle
+  axis) gives a single surface from z 11316 to 14292 over two turns. It carries six rows of letter-sized forms about
+  500 slices apart, in the self-trained models and in the untuned ensemble. dupcheck-style tile matching of turn 2
+  against turn 1 finds 9% repeated tiles, so turn 2 is mostly a new wrap with some local snapping. The mesh
+  (`S1_continuous.tifxyz.zip`) is attached to the v0.1 release.
+
+![S1 as one surface](figures/S1_continuous.png)
+
 - Self-training (`selftrain.py`, 2500 steps, labels = top 3% of the 4-model d=0 ensemble of S2 and S3): on S1, which
   was never in training, the tuned reader2 and our v3B model show the same letters as the ensemble with far less
   background and cleaner shapes, and agree with each other. On two chained sheets without text (c5, c7) the tuned
