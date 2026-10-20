@@ -63,9 +63,9 @@ KOINE=villa/ink-detection VESUVIUS_SRC=villa/vesuvius/src MODEL=reader2 TRAIN=S2
   about 3 voxels, runner-up 6-17 voxels (hard-boundary matching: best 8-15, runner-up 13-20). It reproduces the
   link we had made by eye for the sheet carrying the clearest letters.
 - Duplicate check: chained sheets give 0-2% matching tiles, duplicated windings 26-81% (343f w041/w042 81%,
-  343e w042/w043 44%, 343e w067-w069 26-35%). It also catches repeats far apart: a panel whose first turn is S1's
-  second turn (59%, one turn = 4496 px away) and an older panel offset by 344 slices (44%). We count each such
-  group once.
+  343e w042/w043 44%, 343e w067-w069 26-35%, the w042 and w043 chains 28%). As controls, the same winding rendered
+  in two different panels is found even a full turn (59%) or 344 rows (44%) away. We count each duplicated group
+  once.
 - Sheets followed this way show letter rows on three distinct sheets beyond the First Letters mesh (z ~11750 to
   ~13730), two lines per sheet, line spacing 3.5-4.3 mm, in three independently trained ink models.
 
@@ -77,6 +77,12 @@ KOINE=villa/ink-detection VESUVIUS_SRC=villa/vesuvius/src MODEL=reader2 TRAIN=S2
   models give scattered spots but no letter rows, so the tuning does not turn noise into lines.
 
 ![self-training, S1 held out](figures/selftrain_S1_heldout.jpg)
+
+## Related work
+
+- [spiralfiteval](https://github.com/jo-tud/spiralfiteval) (Johannes Pfeffer) scores spiral fits and has a geometric
+  duplicate-winding check (fitted surfaces closer than about 2 voxels). `dupcheck.py` covers the case after snapping,
+  where fits stay 6-9 voxels apart yet sit on the same sheet, using the CT texture of the rendered surfaces.
 
 ## Limits
 
