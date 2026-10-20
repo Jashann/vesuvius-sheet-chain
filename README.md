@@ -78,6 +78,11 @@ KOINE=villa/ink-detection VESUVIUS_SRC=villa/vesuvius/src MODEL=reader2 TRAIN=S2
 
 ![self-training, S1 held out](figures/selftrain_S1_heldout.jpg)
 
+**Weights:** the self-trained reader-v2 for PHerc. 343 (`reader2_selftrained_343.pt`, 138 MB, sha256 `72f029e320a4c54b614d97de11757d1f3f325101d35800b045335027f8cdb406`) is
+attached to the [v0.1 release](https://github.com/Jashann/vesuvius-sheet-chain/releases/tag/v0.1). It is a fine-tune of
+[reader-v2](https://huggingface.co/domenicor046/reader-v2) by Domenico Russo (MIT), trained on S2 and S3 only. Use it with
+`MODEL=reader2 INIT=reader2_selftrained_343.pt STEPS=0 python sheetchain/selftrain.py renders out` (predict only).
+
 ## Related work
 
 - [spiralfiteval](https://github.com/jo-tud/spiralfiteval) (Johannes Pfeffer) scores spiral fits and has a geometric
